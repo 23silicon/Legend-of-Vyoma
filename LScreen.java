@@ -1,3 +1,8 @@
+/*
+ * LScreen is just a JPanel that creates a loading screen at the start of the game.
+ * It disappears once the loading bar is complete.
+ */
+
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -9,7 +14,7 @@ import java.awt.geom.Rectangle2D;
 public class LScreen extends JPanel {
 	
 	private LBar bar;
-	boolean destroy;
+	boolean destroy; //if this is set to true, the screen disappears
 	
 	public LScreen(Rectangle r) {
 		
@@ -68,7 +73,7 @@ class LBar extends JComponent {
 		backbar.setRect(backbar.getX()+e, backbar.getY(), backbar.getWidth(), backbar.getHeight());
 		repaint();
 		counter++;
-		if (counter > 69) {
+		if (counter > 69) { //this is the part where the loading bar has reached completion
 			e = 0;
 			destroy = true;
 		}
