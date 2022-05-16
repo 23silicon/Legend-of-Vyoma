@@ -1,8 +1,4 @@
-/*
- * LScreen is just a JPanel that creates a loading screen at the start of the game.
- * It disappears once the loading bar is complete.
- */
-
+package main_classes;
 import javax.swing.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,6 +7,11 @@ import java.awt.Graphics2D;
 import java.awt.Rectangle;
 import java.awt.Toolkit;
 import java.awt.geom.Rectangle2D;
+@SuppressWarnings({ "serial", "unused" })
+/*
+ * LScreen is just a JPanel that creates a loading screen at the start of the game
+ * It disappears once the loading bar is complete
+ */
 public class LScreen extends JPanel {
 	
 	private LBar bar;
@@ -23,7 +24,6 @@ public class LScreen extends JPanel {
 		setBackground(Color.black);
 		bar = new LBar(r);
 		add(bar);
-
 		
 		setVisible(true);
 	}
@@ -34,6 +34,7 @@ public class LScreen extends JPanel {
 	}
 }
 
+@SuppressWarnings("serial")
 class LBar extends JComponent {
 	
 	private Rectangle2D.Double midbar;
@@ -47,7 +48,6 @@ class LBar extends JComponent {
 	public LBar(Rectangle r) {
 		setSize(2000,200);
 		setLocation((int)r.getWidth()/2-350-700,(int)r.getHeight()/2-20);
-		System.out.println((int)r.getWidth());
 		setFocusable(false);
 		midbar = new Rectangle2D.Double(700,5,700,40);
 		dumbar = new Rectangle2D.Double(695,0,710,50);
