@@ -1,4 +1,6 @@
-import javax.swing.*;	
+package main_classes;
+import javax.swing.*;
+
 import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.Toolkit;
@@ -6,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
+@SuppressWarnings("serial")
 public class Main extends JFrame implements ActionListener {
 	
 private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
@@ -20,6 +23,7 @@ private LScreen lscreen;
 		CardLayout cardsChris = new CardLayout();
 		setBounds(0,0,(int)screenSize.getWidth(),(int)screenSize.getHeight());
 		setTitle("The Legend of Vyoma");
+		setLocationRelativeTo(null);
 		
 		//main panel that everything else is on
 		mainpain.setLayout(cardsChris);
@@ -46,6 +50,11 @@ private LScreen lscreen;
 		lscreen.update();
 		if (lscreen.destroy) {
 			mainpain.remove(lscreen);
+		}
+		
+		for(Enemy i:enemies) {
+			i.pathfind();
+			i.update();
 		}
 	}
 	
