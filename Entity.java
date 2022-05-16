@@ -1,24 +1,37 @@
+package main_classes;
 import javax.swing.JComponent;
 /*
- * This class represents entities within the game!!!!!!!
- * Any class that creates a mob such as a player or enemy MUST extend this class.
+ * This class represents entities within the game
+ * Any class that creates a mob such as a player or enemy MUST extend this class
  */
+@SuppressWarnings("all")
 public class Entity extends JComponent {
-	
+
+//Sunflower Fields
 	private int dx, dy, px, py;
-	
-	public Entity() {}
-	
-	public Entity(int dx, int dy, int px, int py) {
-		this.dx = dx;
-		this.dy = dy;
+
+//****CONSTRUCTION ZONE KEEP OUT****
+	public Entity(int px, int py) {
+		this.dx = 0;
+		this.dy = 0;
 		this.px = px;
 		this.py = py;
 	}
-	
+//****CONSTRUCTION ZONE KEEP OUT****
+
+/*
+ * Update method for entity, used for movement
+ */
 	public void update() {
-		px  += dx;
+		px += dx;
 		py += dy;
+		setLocation(px,py);
 		repaint();
 	}
+
+//Accessor Methods
+	public int getPX() {return px;}
+	public int getPY() {return py;}
+	public int getDX() {return dx;}
+	public int getDY() {return dy;}
 }
