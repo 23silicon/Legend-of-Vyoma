@@ -29,6 +29,13 @@ public class Entity extends JComponent {
 		repaint();
 	}
 
+/*
+ * Allows entities to move to specific tiles
+ */
+	public void moveToTile(Tile t) {
+		
+	}
+
 //Accessor Methods
 	public int getPX() {return px;}
 	public int getPY() {return py;}
