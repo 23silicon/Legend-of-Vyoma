@@ -1,6 +1,5 @@
 package main_classes;
 import javax.swing.*;
-
 import java.awt.CardLayout;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -15,9 +14,8 @@ public class Main extends JFrame implements ActionListener {
 	
 private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 private JPanel mainpain = new JPanel();
-private JPanel gamepain = new JPanel();
+private ScreenT scrent;
 private LScreen lscreen;
-private Tile[][] t;
 private CardLayout cardsChris;
 private Insets insets;
 
@@ -25,7 +23,7 @@ private Insets insets;
 	public Main() {
 		
 		//initial steps
-		Dimension screenSize = Toolkit.getDefaultToolkit().getScreenSize();
+		Dimension screenSize = new Dimension(1026,684);
 		cardsChris = new CardLayout();
 		setBounds(0,0,(int)screenSize.getWidth(),(int)screenSize.getHeight());
 		setTitle("The Legend of Vyoma");
@@ -37,27 +35,30 @@ private Insets insets;
 		mainpain.setLayout(cardsChris);
 		add(mainpain);
 		
-		//gamepain
-		gamepain.setBackground(new Color(100,230,255));
-		gamepain.setLayout(null);
+		/*
+		 * OW Screens:
+		 * 	C T D
+		 *    U
+		 * C = screnc
+		 * T = scrent
+		 * D = scrend
+		 * U = screnu
+		 */
+		//scrent
+		scrent = new ScreenT(insets);
 		
 		//loading screen because it's cool
 		lscreen = new LScreen(getBounds());
 		lscreen.setPreferredSize(screenSize);
 		
-		t = new Tile[6][9];
-		for (int i = 0; i < t.length; i++) {
-			for (int j = 0; j < t[0].length; j++) {
-				t[i][j] = new Tile(j,i, insets);
-			}
-		}
+		
 
 
 		
 		Timer move = new Timer(15,this);
 		move.start();
 		mainpain.add(lscreen, "lscreen");
-		mainpain.add(gamepain, "gamepain");
+		mainpain.add(scrent, "scrent");
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -68,12 +69,7 @@ private Insets insets;
 	public void actionPerformed(ActionEvent e) {
 		lscreen.update();
 		if (lscreen.destroy) {
-			cardsChris.show(mainpain, "gamepain");
-			for (int i = 0; i < t.length; i++) {
-				for (int j = 0; j < t[i].length; j++) {
-					gamepain.add(t[i][j]);
-				}
-			}
+			cardsChris.show(mainpain, "scrent");
 		}
 		
 		for(Enemy i:enemies) {
