@@ -55,6 +55,9 @@ public class Tile extends JComponent {
 		repaint();
 	}
 	
+	public Rectangle getRect() {
+		return rect;
+	}
 	
 	public String toString() {
 		return "|cX:" + cornerX + "|cY:" + cornerY + "|pX:" + px + "|pY:" + py
