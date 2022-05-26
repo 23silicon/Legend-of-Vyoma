@@ -3,9 +3,6 @@ package main_classes;
 import java.awt.Dimension;
 import java.io.FileNotFoundException;
 import java.awt.Insets;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
@@ -25,17 +22,17 @@ public class ScreenT extends Screen {
 		super(insets, coords);
 		setLayout(null);
 		try {
-		image = new ImageIcon("src/MapT.png");
+		image = new ImageIcon("src/maps/MapT.png");
 		if (image.getIconWidth() == -1) throw new Exception();
 		display = new JLabel(image);
 		display.setBounds(0,0,1027,685);
 		this.add(display);
 		} catch (Exception e) {
-			System.err.println("Image not found. Make sure you move it into the src folder"
-					+ "\n and it's named \"MapT.png\"\n - Nikhil");
+			System.err.println("Image not found. Make sure you move it into the src folder > "
+					+ "\"maps\""
+					+ "\nand it's named \"MapT.png\"\n - Nikhil");
 		}
 		setFocusable(false);
 		setVisible(true);
 	}
-
 }
