@@ -30,6 +30,7 @@ public class Tile extends JComponent {
 		this.setLocation(cornerX, cornerY);
 		this.setSize(sX+1, sY+1);
 		isRael = true;
+		rect = new Rectangle(cornerX, cornerY, sX, sY);
 	}
 	
 	public void paintComponent(Graphics g) {
