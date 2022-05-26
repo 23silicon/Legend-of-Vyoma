@@ -22,14 +22,15 @@ public class ScreenU extends Screen {
 		super(insets, coords);
 		setLayout(null);
 		try {
-		image = new ImageIcon("src/MapU.png");
+		image = new ImageIcon("src/maps/MapU.png");
 		if (image.getIconWidth() == -1) throw new Exception();
 		display = new JLabel(image);
 		display.setBounds(0,0,1027,685);
 		this.add(display);
 		} catch (Exception e) {
-			System.err.println("Image not found. Make sure you move it into the src folder"
-					+ "\n and it's named \"MapT.png\"\n - Nikhil");
+			System.err.println("Image not found. Make sure you move it into the src folder > "
+					+ "\"maps\""
+					+ "\n and it's named \"MapU.png\"\n - Nikhil");
 		}
 		setFocusable(false);
 		setVisible(true);
