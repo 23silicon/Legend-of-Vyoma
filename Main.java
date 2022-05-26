@@ -9,12 +9,13 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
-@SuppressWarnings("serial")
+@SuppressWarnings({"serial", "unused"})
 public class Main extends JFrame implements ActionListener {
 	
 private ArrayList<Enemy> enemies = new ArrayList<Enemy>();
 private JPanel mainpain = new JPanel();
 private ScreenT scrent;
+private ScreenU screnu;
 private LScreen lscreen;
 private CardLayout cardsChris;
 private Insets insets;
@@ -46,6 +47,7 @@ private Insets insets;
 		 */
 		//scrent
 		scrent = new ScreenT(insets);
+		screnu = new ScreenU(insets);
 		
 		//loading screen because it's cool
 		lscreen = new LScreen(getBounds());
@@ -59,6 +61,7 @@ private Insets insets;
 		move.start();
 		mainpain.add(lscreen, "lscreen");
 		mainpain.add(scrent, "scrent");
+		mainpain.add(screnu, "screnu");
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -69,7 +72,7 @@ private Insets insets;
 	public void actionPerformed(ActionEvent e) {
 		lscreen.update();
 		if (lscreen.destroy) {
-			cardsChris.show(mainpain, "scrent");
+			cardsChris.show(mainpain, "screnu");
 		}
 		
 		for(Enemy i:enemies) {
