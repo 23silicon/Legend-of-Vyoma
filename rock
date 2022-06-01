@@ -3,7 +3,7 @@ package main_classes;
 
 public class Rock extends Entity {
 
-	public Player(int px, int py) {
+	public Rock(int px, int py) {
 		super(px, py);
 	}
 
