@@ -76,7 +76,7 @@ public class Enemy extends Entity {
 		return hp;
 	}
 	
-	/*
+	/* 
 	 * TODO
 	 * Moves enemy to a tile depending on its relative pathfinding efficiency
 	 * This is the most important method in this class as it governs movement of the enemy
