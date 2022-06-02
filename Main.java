@@ -19,6 +19,7 @@ private ScreenU screnu;
 private LScreen lscreen;
 private CardLayout cardsChris;
 private Insets insets;
+private Player player;
 
 //****CONSTRUCTION ZONE KEEP OUT****
 	public Main() {
@@ -49,6 +50,9 @@ private Insets insets;
 		scrent = new ScreenT(insets);
 		screnu = new ScreenU(insets);
 		
+		//player
+		player = new Player(80, 80, insets);
+		
 		//loading screen because it's cool
 		lscreen = new LScreen(getBounds());
 		lscreen.setPreferredSize(screenSize);
@@ -62,6 +66,7 @@ private Insets insets;
 		mainpain.add(lscreen, "lscreen");
 		mainpain.add(scrent, "scrent");
 		mainpain.add(screnu, "screnu");
+		screnu.add(player);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
