@@ -1,4 +1,6 @@
 package main_classes;
+import javax.sound.sampled.LineUnavailableException;
+import javax.sound.sampled.UnsupportedAudioFileException;
 import javax.swing.*;
 import java.awt.CardLayout;
 import java.awt.Color;
@@ -7,6 +9,7 @@ import java.awt.Insets;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.util.ArrayList;
 
 @SuppressWarnings({"serial", "unused"})
@@ -19,11 +22,17 @@ private ScreenU screnu;
 private LScreen lscreen;
 private CardLayout cardsChris;
 private Insets insets;
-private Player player;
+private PlayMusic musicPlayer;
 
 //****CONSTRUCTION ZONE KEEP OUT****
 	public Main() {
 		
+		try {
+			musicPlayer = new PlayMusic();
+		} catch (UnsupportedAudioFileException | IOException | LineUnavailableException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		//initial steps
 		Dimension screenSize = new Dimension(1026,684);
 		cardsChris = new CardLayout();
@@ -50,14 +59,10 @@ private Player player;
 		scrent = new ScreenT(insets);
 		screnu = new ScreenU(insets);
 		
-		//player
-		player = new Player(80, 80, insets);
-		
 		//loading screen because it's cool
-		lscreen = new LScreen(getBounds());
+		lscreen = new LScreen(getBounds(), musicPlayer);
 		lscreen.setPreferredSize(screenSize);
-		
-		
+	
 
 
 		
@@ -66,7 +71,6 @@ private Player player;
 		mainpain.add(lscreen, "lscreen");
 		mainpain.add(scrent, "scrent");
 		mainpain.add(screnu, "screnu");
-		screnu.add(player);
 		setVisible(true);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	}
@@ -77,7 +81,11 @@ private Player player;
 	public void actionPerformed(ActionEvent e) {
 		lscreen.update();
 		if (lscreen.destroy) {
+			lscreen.destroy = false;
 			cardsChris.show(mainpain, "screnu");
+			
+			
+			
 		}
 		
 		for(Enemy i:enemies) {
